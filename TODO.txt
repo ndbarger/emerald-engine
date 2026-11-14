@@ -1,0 +1,5 @@
+[] Git repository
+[] Initialize project
+    [] venv
+    [] App
+    [] Pygame
