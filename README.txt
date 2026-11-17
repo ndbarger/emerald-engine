@@ -2,11 +2,11 @@
 |                      EMERALD ENGINE                           |
 +---------------------------------------------------------------+
 
-This is my game engine that I've made using the Pygame framework.
+This is my game engine that I've made using the SDL framework.
 It's intended to be modular and easy to use, but is primarily
 designated for my own work rather than serving as a general-purpose
-engine for everybody. You may use the engine for your own
-games, but I'm not responsible for your usage.
+engine. You may use the engine for your own games, but I'm not 
+responsible for your usage.
 
 The engine is licensed under the MIT, therefore you can do what you
 please with this code according to the license. While the
