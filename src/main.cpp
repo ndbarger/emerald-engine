@@ -1,8 +1,15 @@
-#include <iostream>
+#include "emerald/Application.hpp"
 
 int main()
 {
-    std::cout << "Hello, world!" << std::endl;
+    emerald::Application app;
+
+    if (!app.init())
+        return -1;
     
+    app.run();
+
+    app.shutdown();
+
     return 0;
 }

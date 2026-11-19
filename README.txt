@@ -2,7 +2,7 @@
 |                      EMERALD ENGINE                           |
 +---------------------------------------------------------------+
 
-This is my game engine that I've made using the SDL framework.
+This is my game engine that I'm making using the SDL framework.
 It's intended to be modular and easy to use, but is primarily
 designated for my own work rather than serving as a general-purpose
 engine. You may use the engine for your own games, but I'm not 

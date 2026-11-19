@@ -15,9 +15,10 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 find_package(SDL2 REQUIRED)
 
 # Engine executable
-add_executable(EmeraldEngine
+add_executable(EmeraldEngine WIN32
     src/main.cpp
 
+    src/Application.cpp
 )
 
 # Header directories
@@ -25,8 +26,11 @@ target_include_directories(EmeraldEngine PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
-# Link raylib
-target_link_libraries(EmeraldEngine PRIVATE SDL2)
+# Link SDL
+target_link_libraries(EmeraldEngine PRIVATE
+    SDL2::SDL2main
+    SDL2::SDL2
+)
 
 # Compiler warnings
 if(MSVC)
