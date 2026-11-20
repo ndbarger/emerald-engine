@@ -7,15 +7,15 @@ project(EmeraldEngine
 )
 
 # C++ configuration
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 # find dependencies
-find_package(SDL2 REQUIRED)
+find_package(SDL2 CONFIG REQUIRED)
 
 # Engine executable
-add_executable(EmeraldEngine WIN32
+add_executable(EmeraldEngine
     src/main.cpp
 
     src/Application.cpp
@@ -28,9 +28,10 @@ target_include_directories(EmeraldEngine PRIVATE
 
 # Link SDL
 target_link_libraries(EmeraldEngine PRIVATE
-    SDL2::SDL2main
     SDL2::SDL2
 )
+
+target_compile_definitions(EmeraldEngine PRIVATE SDL_MAIN_HANDLED)
 
 # Compiler warnings
 if(MSVC)
@@ -47,4 +48,11 @@ endif()
 set_target_properties(EmeraldEngine PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY
     "${CMAKE_BINARY_DIR}/bin"
+)
+
+# copy SDL2.dll
+add_custom_command(TARGET EmeraldEngine POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        "C:/msys64/ucrt64/bin/SDL2.dll"
+        "$<TARGET_FILE_DIR:EmeraldEngine>"
 )

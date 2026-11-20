@@ -1,10 +1,11 @@
 GOALS
 
-[] organize project directory structure
-[] create the Application class
-[] implement application initialization, execution, and shutdown
-[] implement basic window management
-[] implement texture/image loading
+[*] organize project directory structure
+[*] create the Application class
+[*] implement application initialization, execution, and shutdown
+[WAITING] implement simple logger system
+[*] implement basic window management
+[*] implement texture/image loading
 [] render a regular image
 [] experiment with spritesheet rendering
 
@@ -12,8 +13,3 @@ stretch goals:
 [] keyboard input handling
 [] FPS counter
 [] configurable frame rate
-
-BUILD
-
-Config build: cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Debug -DCMAKE_PREFIX_PATH=C:/msys64/ucrt
-build: cmake --build build

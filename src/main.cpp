@@ -6,7 +6,7 @@ int main()
 
     if (!app.init())
         return -1;
-    
+
     app.run();
 
     app.shutdown();

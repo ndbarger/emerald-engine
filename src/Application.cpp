@@ -1,6 +1,6 @@
-#include <iostream>
+#include <emerald/Application.hpp>
 
-#include "emerald/Application.hpp"
+#include <iostream>
 
 namespace emerald
 {
@@ -10,27 +10,26 @@ namespace emerald
         int rendererFlags, windowFlags;
 
         rendererFlags = 0; // SDL render flags
-        windowFlags = 0; // SDL window flags
+        windowFlags = 0;   // SDL window flags
 
         running = false; // not running yet
 
-        if (!SDL_Init(SDL_INIT_VIDEO))
+        if (SDL_Init(SDL_INIT_VIDEO) != 0)
         {
             std::cout << "Couldn't initialize SDL: " << SDL_GetError() << std::endl; /* TODO: create a custom logger instead of directly using iostream */
             return 1;
         }
 
         window = SDL_CreateWindow(
-            "Emerald Engine Runtime", 
+            "Emerald Engine Runtime",
             SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-            SCREEN_WIDTH, SCREEN_HEIGHT, windowFlags
-        );
+            SCREEN_WIDTH, SCREEN_HEIGHT, windowFlags);
 
         renderer = SDL_CreateRenderer(window, -1, rendererFlags);
 
-        if (!renderer)
+        if (renderer == NULL)
         {
-            std::cout << "Failed to create renderer: %s\n" << SDL_GetError() << std::endl;
+            std::cout << "Failed to create renderer: " << SDL_GetError() << std::endl;
             return 1;
         }
     }
@@ -48,12 +47,12 @@ namespace emerald
             {
                 switch (event.type)
                 {
-                    case SDL_QUIT:
-                        running = false;
-                        break;
-                    
-                    default:
-                        break;   
+                case SDL_QUIT:
+                    running = false;
+                    break;
+
+                default:
+                    break;
                 }
             }
 
