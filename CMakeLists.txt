@@ -13,12 +13,18 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 # find dependencies
 find_package(SDL2 CONFIG REQUIRED)
+find_package(SDL2_image REQUIRED)
 
 # Engine executable
 add_executable(EmeraldEngine
     src/main.cpp
 
     src/Application.cpp
+    
+    src/core/Logger.cpp
+    src/core/ResourceManager.cpp
+
+    src/graphics/Texture.cpp
 )
 
 # Header directories
@@ -29,6 +35,7 @@ target_include_directories(EmeraldEngine PRIVATE
 # Link SDL
 target_link_libraries(EmeraldEngine PRIVATE
     SDL2::SDL2
+    SDL2_image::SDL2_image
 )
 
 target_compile_definitions(EmeraldEngine PRIVATE SDL_MAIN_HANDLED)
@@ -54,5 +61,11 @@ set_target_properties(EmeraldEngine PROPERTIES
 add_custom_command(TARGET EmeraldEngine POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_if_different
         "C:/msys64/ucrt64/bin/SDL2.dll"
+        "$<TARGET_FILE_DIR:EmeraldEngine>"
+)
+
+add_custom_command(TARGET EmeraldEngine POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        "C:/msys64/ucrt64/bin/SDL2_image.dll"
         "$<TARGET_FILE_DIR:EmeraldEngine>"
 )

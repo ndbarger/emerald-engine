@@ -1,4 +1,6 @@
-#include <emerald/Application.hpp>
+#include "emerald/Application.hpp"
+
+#include "emerald/core/Logger.hpp"
 
 #include <iostream>
 
@@ -13,6 +15,8 @@ namespace emerald
         windowFlags = 0;   // SDL window flags
 
         running = false; // not running yet
+
+        std::cout << "Starting SDL..." << std::endl;
 
         if (SDL_Init(SDL_INIT_VIDEO) != 0)
         {
@@ -32,6 +36,8 @@ namespace emerald
             std::cout << "Failed to create renderer: " << SDL_GetError() << std::endl;
             return 1;
         }
+
+        return 0;
     }
 
     void Application::run()

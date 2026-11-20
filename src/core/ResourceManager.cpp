@@ -1,4 +1,4 @@
-#include "core/ResourceManager.hpp"
+#include "emerald/core/ResourceManager.hpp"
 
 namespace emerald
 {

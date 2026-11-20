@@ -1,6 +1,6 @@
 #pragma once
 
-#include "core/ResourceManager.hpp"
+#include "emerald/core/ResourceManager.hpp"
 
 #include <SDL2/SDL.h>
 

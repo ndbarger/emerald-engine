@@ -1,4 +1,4 @@
-#include "graphics/Texture.hpp"
+#include "emerald/graphics/Texture.hpp"
 
 #include <SDL2/SDL_image.h>
 
