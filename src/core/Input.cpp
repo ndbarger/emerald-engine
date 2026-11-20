@@ -1,4 +1,5 @@
 #include "emerald/core/Input.hpp"
+#include "emerald/core/Logger.hpp"
 
 #include <SDL.h>
 
@@ -27,23 +28,47 @@ namespace emerald
                 break;
             case SDL_KEYDOWN:
                 if (event.key.keysym.sym == SDLK_UP)
+                {
+                    Logger::info("Key down: up");
                     up = true;
+                }
                 if (event.key.keysym.sym == SDLK_DOWN)
+                {
+                    Logger::info("Key down: down");
                     down = true;
+                }
                 if (event.key.keysym.sym == SDLK_LEFT)
+                {
+                    Logger::info("Key down: left");
                     left = true;
+                }
                 if (event.key.keysym.sym == SDLK_RIGHT)
+                {
+                    Logger::info("Key down: right");
                     right = true;
+                }
                 break;
             case SDL_KEYUP:
                 if (event.key.keysym.sym == SDLK_UP)
+                {
+                    Logger::info("Key up: up");
                     up = false;
+                }
                 if (event.key.keysym.sym == SDLK_DOWN)
+                {
+                    Logger::info("Key up: down");
                     down = false;
+                }
                 if (event.key.keysym.sym == SDLK_LEFT)
+                {
+                    Logger::info("Key up: left");
                     left = false;
+                }
                 if (event.key.keysym.sym == SDLK_RIGHT)
+                {
+                    Logger::info("Key up: right");
                     right = false;
+                }
                 break;
 
             default:

@@ -19,13 +19,13 @@ find_package(SDL2_image REQUIRED)
 add_executable(EmeraldEngine
     src/main.cpp
 
-    src/Application.cpp
-    
+    src/core/Application.cpp
     src/core/Logger.cpp
     src/core/ResourceManager.cpp
     src/core/Input.cpp
 
     src/graphics/Texture.cpp
+    src/graphics/Sprite.cpp
 )
 
 # Header directories
@@ -33,10 +33,22 @@ target_include_directories(EmeraldEngine PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
+include(FetchContent)
+
+FetchContent_Declare(
+    fmt
+    GIT_REPOSITORY https://github.com/fmtlib/fmt.git
+    GIT_TAG 11.2.0
+)
+
+FetchContent_MakeAvailable(fmt)
+
+
 # Link SDL
 target_link_libraries(EmeraldEngine PRIVATE
     SDL2::SDL2
     SDL2_image::SDL2_image
+    fmt::fmt
 )
 
 target_compile_definitions(EmeraldEngine PRIVATE SDL_MAIN_HANDLED)
