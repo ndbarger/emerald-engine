@@ -2,6 +2,7 @@
 
 #include <iostream>
 
+/* TODO: create more intricate logging system with string formatting */
 namespace emerald
 {
     // Not sure if we're going to use this yet

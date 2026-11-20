@@ -23,6 +23,7 @@ add_executable(EmeraldEngine
     
     src/core/Logger.cpp
     src/core/ResourceManager.cpp
+    src/core/Input.cpp
 
     src/graphics/Texture.cpp
 )
