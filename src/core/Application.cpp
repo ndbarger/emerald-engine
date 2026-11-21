@@ -1,6 +1,7 @@
 #include "emerald/core/Application.hpp"
 #include "emerald/core/Logger.hpp"
 #include "emerald/core/Input.hpp"
+#include "emerald/core/ResourceManager.hpp"
 
 #include <iostream>
 
@@ -47,6 +48,11 @@ namespace emerald
             Logger::fatal("Failed to create renderer: {}", SDL_GetError());
             return 1;
         }
+
+        // initialize resources
+        Logger::info("Loading resources...");
+        ResourceManager resources;
+        resources.loadTexture(renderer, "daved", "res/daved.png");
 
         Logger::info("Initialization complete.");
 
@@ -106,6 +112,10 @@ namespace emerald
             SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
             SDL_RenderFillRect(renderer, new SDL_Rect({x, y, 64, 96}));
 
+            // get texture to load
+            Texture *davedTexture = resources.getTexture("daved");
+            SDL_RenderCopy(renderer, davedTexture->get(), NULL, NULL);
+
             // present scene
             SDL_RenderPresent(renderer);
         }
@@ -116,6 +126,8 @@ namespace emerald
         Logger::info("Shutting down Emerald Engine...");
 
         // clean up the memory used by SDL
+
+        resources.unloadAll();
 
         SDL_DestroyRenderer(renderer);
         SDL_DestroyWindow(window);
