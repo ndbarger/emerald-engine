@@ -52,7 +52,10 @@ namespace emerald
         // initialize resources
         Logger::info("Loading resources...");
         ResourceManager resources;
-        resources.loadTexture(renderer, "daved", "res/daved.png");
+        if (resources.loadTexture(renderer, "daved", "res/daved.png") == NULL)
+        {
+            Logger::error("Failed to load texture!");
+        }
 
         Logger::info("Initialization complete.");
 
